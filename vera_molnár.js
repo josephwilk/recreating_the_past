@@ -102,7 +102,7 @@ BAR_SIDE = function(count) {
 };
 
 function draw() {
-  background(235);
+  background(219, 221,215);
   strokeWeight(2.2);
 
   grid = [
@@ -119,5 +119,5 @@ function draw() {
       fn(row, col);
     }
   }
-  stroke(90);
+  stroke(89,95,90);
 }
