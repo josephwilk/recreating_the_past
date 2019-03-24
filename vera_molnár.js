@@ -87,14 +87,6 @@ function bars(row_idx, col_idx, orientation, count) {
   }
 }
 
-function side_bars(row_idx, col_idx, count) {
-  bars(row_idx, col_idx, "side", count);
-}
-
-function top_bars(row_idx, col_idx, count) {
-  bars(row_idx, col_idx, "top", count);
-}
-
 BAR_TOP = function(count) {
   fn = function(row_idx, col_idx) {
     bars(row_idx, col_idx, "top", count);
