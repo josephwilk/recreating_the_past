@@ -2,7 +2,7 @@ MARGIN_X = 30;
 MARGIN_Y = 30;
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(500, 500);
 }
 
 function bars(row_idx, col_idx, orientation, count) {
@@ -33,8 +33,21 @@ function bars(row_idx, col_idx, orientation, count) {
         line(LEFT_POS + cube_y * (i + 1), TOP, LEFT_POS + cube_y * i, TOP);
       }
     }
-
     line(LEFT_POS + cube_y * limit, TOP, LEFT_POS + cube_y * limit, BOTTOM);
+
+    if (row_idx == 4 && col_idx == 4) {
+      line(
+        LEFT_POS + cube_y * limit - 0.4,
+        BOTTOM,
+        LEFT_POS + cube_y * limit - 1.0,
+        BOTTOM + JOIN * 3
+      );
+    }
+
+    if (row_idx == 0 && col_idx == 0) {
+      line(LEFT_POS - 1, TOP, LEFT_POS - 1, TOP + 5);
+    }
+
     if (col_idx != 4) {
       line(
         LEFT_POS + cube_y * (limit + 1),
@@ -102,7 +115,7 @@ BAR_SIDE = function(count) {
 };
 
 function draw() {
-  background(219, 221,215);
+  background(219, 221, 215);
   strokeWeight(2.2);
 
   grid = [
@@ -119,5 +132,5 @@ function draw() {
       fn(row, col);
     }
   }
-  stroke(89,95,90);
+  stroke(89, 95, 90);
 }
