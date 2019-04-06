@@ -17,4 +17,5 @@ P5 Sketch: https://editor.p5js.org/josephwilk/sketches/h3ufSHbf6
 
 ### Joseph Wilk's version (Openframeworks)
 
-https://youtu.be/8GqpQ3tvgwk
+Code: https://github.com/josephwilk/recreating_the_past/tree/master/Whitney
+Demo: https://youtu.be/8GqpQ3tvgwk
