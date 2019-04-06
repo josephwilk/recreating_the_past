@@ -105,11 +105,12 @@ void ofApp::setup(){
   //mesh.enableNormals();
 //  mesh.usingTextures();
 
-  res = 50;
-  int size = 11;
-  for(int y=0; y < res; y++){
-    for(int x=0; x< res; x++){
-      ofMesh m = buildMesh(x*(12*2),y*(12*2), 125, size);
+  resy = 60;
+  resx = 80;
+  int size = 8;
+  for(int y=0;   y < resy; y++){
+    for(int x=0; x < resx; x++){
+      ofMesh m = buildMesh(x*(16+2),y*(16+2), 70, size);
       pyramids.push_back(m);
     }
   }
@@ -211,13 +212,14 @@ void ofApp::update(){
 
     int w = pix.getWidth();
     int h = pix.getHeight();
-    int scalex = w/res;
-    int scaley = h/res;
+
+    int scalex = w/resx; //960     16-pix
+    int scaley = h/resy; //720     18-pix
     colors.clear();
 
-    for (int y=0; (y+scaley)<h; y=y+scaley) {
-      for (int x=0; (x+scalex)<w; x=x+scalex) {
-        ofColor c = pix.getColor(x, y);
+    for (int y=0; y<(h/scaley); y++) {
+      for (int x=0; x<(w/scalex); x++) {
+        ofColor c = pix.getColor(scalex*x, scaley*y);
         colors.push_back(c);
       }
     }
@@ -231,10 +233,10 @@ void ofApp::update(){
     int zFactor = colors[c].getBrightness();
     float newHeight;
     if (zFactor >= 40) {
-      zFactor = zFactor*1.1 + 110;
+      zFactor = zFactor*1.1 + 55;
     }
     else{
-      zFactor = 125;
+      zFactor = 60;
     }
     c+=1;
 
@@ -265,6 +267,35 @@ void ofApp::update(){
     newPyramids.push_back(mesh);
   }
   pyramids = newPyramids;
+
+  for(auto& m : pyramids) {
+
+    int nV = m.getNumVertices();
+    int nT = m.getNumIndices() / 3;
+    std::vector<glm::vec3> norm( nV );
+    for (int t=0; t<nT; t++) {
+      int i1 = m.getIndex( 3 * t );
+      int i2 = m.getIndex( 3 * t + 1 );
+      int i3 = m.getIndex( 3 * t + 2 );
+      //Get vertices of the triangle
+      const ofPoint &v1 = m.getVertex( i1 );
+      const ofPoint &v2 = m.getVertex( i2 );
+      const ofPoint &v3 = m.getVertex( i3 );
+      //Compute the triangle's normal
+
+      ofPoint dir = ( (v2 - v1).crossed( v3 - v1 ) ).normalized();
+      //Accumulate it to norm array for i1, i2, i3
+      norm[ i1 ] += dir;
+      norm[ i2 ] += dir;
+      norm[ i3 ] += dir; }
+    for (int i=0; i<nV; i++) {
+      norm[i] = glm::normalize(norm[i]);
+    }
+    m.clearNormals();
+    m.addNormals(norm);
+
+  }
+  
 
   //colors.reserve(colors.size());
     //std::reverse(colors.begin(), colors.end());
@@ -339,12 +370,12 @@ void ofApp::draw(){
   int x=0;
   int y=0;
   for(auto& m : pyramids) {
-    if((x%res)==0){
-      ofPushMatrix();
-      ofTranslate( 0, 24, 0.05 );
-      ofRotate( 2, 1, 0, 0 );
+    if((x%resx)==0){
+//      ofPushMatrix();
+//      ofTranslate( 0, 24, 0.05 );
+//      ofRotate( 2, 1, 0, 0 );
       y+=1;
-      ofPopMatrix();
+//      ofPopMatrix();
     }
     ofSetColor( colors[x] );
     m.draw();

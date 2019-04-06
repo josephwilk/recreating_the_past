@@ -10,7 +10,8 @@ class ofApp : public ofBaseApp{
 		void draw();
 
     int res;
-
+    int resx;
+    int resy;
     ofMesh buildMesh(int x, int y, int z, int size);
 
     vector<ofMesh> pyramids;
