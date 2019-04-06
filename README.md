@@ -12,3 +12,9 @@ Code: https://github.com/josephwilk/recreating_the_past/blob/master/vera_moln%C3
 P5 Sketch: https://editor.p5js.org/josephwilk/sketches/h3ufSHbf6
 
 ![](https://raw.githubusercontent.com/josephwilk/recreating_the_past/master/.images/vera_josephwilk.png)
+
+## Whitney
+
+### Joseph Wilk's version (Openframeworks)
+
+https://youtu.be/8GqpQ3tvgwk
