@@ -22,7 +22,13 @@
 
 ## Schwartz
 
+### Original
+
+![](https://raw.githubusercontent.com/josephwilk/recreating_the_past/master/.images/Screenshot%202019-04-05%2015.12.43.png)
+
+
 ### Joseph Wilk's version (Openframeworks)
 * Code: https://github.com/josephwilk/recreating_the_past/tree/master/Schwartz
 * Demo: https://vimeo.com/328991279
 
+![](https://raw.githubusercontent.com/josephwilk/recreating_the_past/master/.images/Screenshot%202019-04-07%2015.27.44.png)
