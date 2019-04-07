@@ -19,3 +19,10 @@
 
 * Code: https://github.com/josephwilk/recreating_the_past/tree/master/Whitney
 * Demo: https://youtu.be/8GqpQ3tvgwk
+
+## Schwartz
+
+### Joseph Wilk's version (Openframeworks)
+* Code: https://github.com/josephwilk/recreating_the_past/tree/master/Schwartz
+* Demo: https://vimeo.com/328991279
+
