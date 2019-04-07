@@ -13,6 +13,9 @@ class ofApp : public ofBaseApp{
     int resx;
     int resy;
     ofMesh buildMesh(int x, int y, int z, int size);
+    ofColor averageColor(int cell, int celly);
+
+
 
     vector<ofMesh> pyramids;
     vector<ofColor> colors;
@@ -24,7 +27,7 @@ class ofApp : public ofBaseApp{
     vector<ofVec3f> offsets;
     ofTexture mTex;
     ofLight light;
-  
+    ofLight spotlight;
     
 		void keyPressed(int key);
 		void keyReleased(int key);
