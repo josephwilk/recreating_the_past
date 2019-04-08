@@ -31,4 +31,4 @@
 * Code: https://github.com/josephwilk/recreating_the_past/tree/master/Schwartz
 * Demo: https://vimeo.com/329068503
 
-![](https://raw.githubusercontent.com/josephwilk/recreating_the_past/master/.images/Screenshot 2019-04-08 14.04.40.png)
+![](https://raw.githubusercontent.com/josephwilk/recreating_the_past/master/.images/Screenshot%202019-04-08%2014.04.40.png)
