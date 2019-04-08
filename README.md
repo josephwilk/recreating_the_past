@@ -29,7 +29,6 @@
 
 ### Joseph Wilk's version (Openframeworks)
 * Code: https://github.com/josephwilk/recreating_the_past/tree/master/Schwartz
-* Demo: https://vimeo.com/328991279
-* Error demo: https://vimeo.com/328996244
+* Demo: https://vimeo.com/329068503
 
-![](https://raw.githubusercontent.com/josephwilk/recreating_the_past/master/.images/Screenshot%202019-04-07%2015.27.44.png)
+![](https://raw.githubusercontent.com/josephwilk/recreating_the_past/master/.images/Screenshot 2019-04-08 14.04.40.png)
