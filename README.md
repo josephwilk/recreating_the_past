@@ -32,3 +32,9 @@
 * Demo: https://vimeo.com/329068503
 
 ![](https://raw.githubusercontent.com/josephwilk/recreating_the_past/master/.images/Screenshot%202019-04-08%2014.04.40.png)
+
+
+## Maeda
+Implemented in postscript
+* Code: https://github.com/josephwilk/recreating_the_past/blob/master/Maeda/script.ps
+![](https://raw.githubusercontent.com/josephwilk/recreating_the_past/master/.images/Screenshot%202019-04-11%2023.38.32.png)
