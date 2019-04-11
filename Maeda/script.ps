@@ -1,0 +1,79 @@
+%!PS
+
+<< /PageSize [595 842] >> setpagedevice
+
+% paper size
+/pagewidth 6.0 80 mul def
+/pageheight 12 72 mul def
+
+/box {w 0 rlineto 0 w rlineto -1 w mul 0 rlineto closepath} def
+
+% ----- Define centimeter
+/cm {28.346 mul} def
+/w {4.8 cm} def
+/ww {w 0.8 mul} def
+
+/Optima-Bold findfont
+%/Times-Roman findfont
+%/ArialMT findfont
+%110 scalefont
+setfont
+
+/xindent {22} def
+/yindent {700} def
+/margin {25} def
+
+/word {
+       /size {y 10 div} def
+       /Optima-Bold findfont size scalefont setfont
+       newpath
+       x y moveto
+       (o)
+       show
+}  def
+
+%         startval inc final     procedure
+/wordline {w       ww  pagewidth {/x exch def word}     for} def
+/page     {w margin pageheight { /y exch def wordline } for} def
+
+page
+
+%showpage
+%/x 72 def
+%/y 738 def
+%/fs 10 def
+%/Helvetica fs selectfont
+%(*) {x y moveto show /y y fs sub def y 36 lt {showpage /y 738 def}if} 256 string /Font resourceforall
+
+showpage
+
+% xindent yindent showText
+
+% /yindent yindent margin sub def
+% /Times-Roman findfont 15 scalefont setfont
+% xindent yindent showText
+
+% /yindent yindent margin sub def
+% /Times-Roman findfont 10 scalefont setfont
+% xindent yindent showText
+
+% /yindent yindent margin sub def
+% /Times-Roman findfont 9 scalefont setfont
+% xindent yindent showText
+
+
+
+% % ----- Define procedure for drawing a box
+% /box {w 0 rlineto 0 w rlineto -1 w mul 0 rlineto closepath} def
+
+% % take in account the size of a square
+% /pagewidth pagewidth ww sub def
+% /pageheight pageheight w sub def
+
+% % draw all the boxes it can across a single row
+% /rowboxes {w ww pagewidth {newpath y moveto box fill} for} def
+
+% % increments the y variable and draws all the rows
+% w ww pageheight { /y exch def rowboxes } for
+
+showpage
