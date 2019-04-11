@@ -2,18 +2,18 @@
 << /PageSize [595 842] >> setpagedevice
 
 % paper size
-/pagewidth 6 80 mul def
-/pageheight 12 72 mul def
+/pagewidth 5 80 mul def
+/pageheight 15 72 mul def
 
 /box {w 0 rlineto 0 w rlineto -1 w mul 0 rlineto closepath} def
 
 % ----- Define centimeter
 /cm {28.346 mul} def
-/w {4.8 cm} def
-/ww {w 0.5 mul} def
+/w {10.8 cm} def
+/ww {w 1.5 mul} def
 
-/marginxoffset -135 def
-/marginyoffset -130 def
+/marginxoffset -305 def
+/marginyoffset -350 def
 
 
 /GujaratiMT-Bold findfont
@@ -22,7 +22,7 @@
 110 scalefont
 setfont
 
-/xindent {22} def
+/xindent {202} def
 /yindent {700} def
 /margin {25} def
 
@@ -33,14 +33,12 @@ setfont
 
 /GujaratiMT-Bold findfont 100 scalefont setfont
 
-
+%0 -1 translate
 %newpath 0 0 moveto (Joseph) oshow
 
 
 /Helvetica-Bold findfont
 145 scalefont setfont
-0 730 moveto
-(JOSEPH) show
 
 
 /word {
@@ -48,7 +46,7 @@ setfont
             99
             lt}  def
 
-    /size {y 6 div} def
+    /size {y 0.13 mul} def
 
     /jitter {dice {0} {4} ifelse} def
 
@@ -58,13 +56,18 @@ setfont
     /y''  y' def%{y' jitter add} def
     /x''  x' def%{x' jitter add} def
 
+    /yinv {10 y sub} def
+    /g {0.0002 y mul} def
+    /g' {0.9 g sub} def
+    g' setgray
+
     /Helvetica-Bold findfont size scalefont setfont
     /target {dice {(JOSEPH)} {(JOSEPH)} ifelse} def
-    %/target (Joseph)
-    /yz {y 0.2 mul} def
+    /yz {y 0.1 mul } def
 
-    %1 1 translate
-    %1 rotate
+    0.12 0 translate
+    0.2 rotate
+
 
     newpath
     x'' y'' moveto
@@ -73,13 +76,21 @@ setfont
 
 }  def
 
-%         startval inc final     procedure
-/wordline {w       ww  pagewidth {/x exch def word}     for} def
-/page     {w margin pageheight { /y exch def wordline } for} def
+%         startval inc    final     procedure
+/wordline {w       ww     pagewidth  {/x exch def word}      for} def
+/page     {w       3.8     pageheight { /y exch def wordline } for} def
 
 
-
+0.8 setgray
+-40.5 rotate
+-20 0 translate
 page
+
+0.0 setgray
+0 730 moveto
+(JOSEPH) show
+
+
 %0.0 0.0 0.0 setrgbcolor clippath fill
 
 %showpage
