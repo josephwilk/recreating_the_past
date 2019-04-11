@@ -3,7 +3,7 @@
 << /PageSize [595 842] >> setpagedevice
 
 % paper size
-/pagewidth 6.0 80 mul def
+/pagewidth 6 80 mul def
 /pageheight 12 72 mul def
 
 /box {w 0 rlineto 0 w rlineto -1 w mul 0 rlineto closepath} def
@@ -11,7 +11,11 @@
 % ----- Define centimeter
 /cm {28.346 mul} def
 /w {4.8 cm} def
-/ww {w 0.8 mul} def
+/ww {w 0.1 mul} def
+
+/marginxoffset -20 def
+/marginyoffset -95 def
+
 
 /Optima-Bold findfont
 %/Times-Roman findfont
@@ -23,13 +27,22 @@ setfont
 /yindent {700} def
 /margin {25} def
 
+/target (o) def
+
+
 /word {
-       /size {y 10 div} def
-       /Optima-Bold findfont size scalefont setfont
-       newpath
-       x y moveto
-       (o)
-       show
+    /size {y 17 div} def
+    /y'   {y marginyoffset add} def
+    /x'   {x marginxoffset add} def
+    /Optima-Bold findfont size scalefont setfont
+    /dice  {rand 100 mod
+            99
+            lt}  def
+    /target {dice {(0)} {(1)} ifelse} def
+    newpath
+    x' y' moveto
+    target
+    show
 }  def
 
 %         startval inc final     procedure
@@ -76,4 +89,4 @@ showpage
 % % increments the y variable and draws all the rows
 % w ww pageheight { /y exch def rowboxes } for
 
-showpage
+%showpage
