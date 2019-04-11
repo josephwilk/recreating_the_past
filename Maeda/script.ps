@@ -12,8 +12,8 @@
 /w {10.8 cm} def
 /ww {w 1.5 mul} def
 
-/marginxoffset -305 def
-/marginyoffset -350 def
+/marginxoffset -300 def
+/marginyoffset -360 def
 
 
 /GujaratiMT-Bold findfont
@@ -42,6 +42,8 @@ setfont
 
 
 /word {
+    /x 1
+%    /letter (J) def
     /dice  {rand 100 mod
             99
             lt}  def
@@ -62,30 +64,60 @@ setfont
     g' setgray
 
     /Helvetica-Bold findfont size scalefont setfont
-    /target {dice {(JOSEPH)} {(JOSEPH)} ifelse} def
+    /target {dice {(J)} {(J)} ifelse} def
     /yz {y 0.1 mul } def
 
-    0.12 0 translate
-    0.2 rotate
-
+    0.0 0 translate
+    0.5 rotate
 
     newpath
     x'' y'' moveto
-    target
+    letter
     oshow
-
 }  def
 
 %         startval inc    final     procedure
-/wordline {w       ww     pagewidth  {/x exch def word}      for} def
-/page     {w       3.8     pageheight { /y exch def wordline } for} def
+/wordline {w       ww     pagewidth  {
+               /x exch def word
+
+           } for} def
+/page     {w       4.8    pageheight {
+               /y exch def /x
+               wordline
+           } for} def
+
+0.8 setgray
+-81.0 rotate
+-20 0 translate
+/letter (J) def
+page
 
 
 0.8 setgray
--40.5 rotate
--20 0 translate
+-81.0 rotate
+/marginxoffset -200 def
+/letter (O) def
 page
 
+
+0.8 setgray
+-81.0 rotate
+/marginxoffset -100 def
+/letter (S) def
+page
+
+
+0.8 setgray
+-81 rotate
+%20 -20 translate
+
+/marginxoffset 140 def
+/letter (H) def
+page
+
+
+
+10 -15 translate
 0.0 setgray
 0 730 moveto
 (JOSEPH) show
