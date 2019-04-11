@@ -1,5 +1,4 @@
 %!PS
-
 << /PageSize [595 842] >> setpagedevice
 
 % paper size
@@ -11,16 +10,16 @@
 % ----- Define centimeter
 /cm {28.346 mul} def
 /w {4.8 cm} def
-/ww {w 0.1 mul} def
+/ww {w 0.5 mul} def
 
-/marginxoffset -20 def
-/marginyoffset -95 def
+/marginxoffset -135 def
+/marginyoffset -130 def
 
 
-/Optima-Bold findfont
+/GujaratiMT-Bold findfont
 %/Times-Roman findfont
 %/ArialMT findfont
-%110 scalefont
+110 scalefont
 setfont
 
 /xindent {22} def
@@ -29,27 +28,59 @@ setfont
 
 /target (o) def
 
+/oshow %stack: (string)
+{ true charpath stroke } def
+
+/GujaratiMT-Bold findfont 100 scalefont setfont
+
+
+%newpath 0 0 moveto (Joseph) oshow
+
+
+/Helvetica-Bold findfont
+145 scalefont setfont
+0 730 moveto
+(JOSEPH) show
+
 
 /word {
-    /size {y 17 div} def
-    /y'   {y marginyoffset add} def
-    /x'   {x marginxoffset add} def
-    /Optima-Bold findfont size scalefont setfont
     /dice  {rand 100 mod
             99
             lt}  def
-    /target {dice {(0)} {(1)} ifelse} def
+
+    /size {y 6 div} def
+
+    /jitter {dice {0} {4} ifelse} def
+
+    /y'   {y marginyoffset add} def
+    /x'   {x marginxoffset add} def
+
+    /y''  y' def%{y' jitter add} def
+    /x''  x' def%{x' jitter add} def
+
+    /Helvetica-Bold findfont size scalefont setfont
+    /target {dice {(JOSEPH)} {(JOSEPH)} ifelse} def
+    %/target (Joseph)
+    /yz {y 0.2 mul} def
+
+    %1 1 translate
+    %1 rotate
+
     newpath
-    x' y' moveto
+    x'' y'' moveto
     target
-    show
+    oshow
+
 }  def
 
 %         startval inc final     procedure
 /wordline {w       ww  pagewidth {/x exch def word}     for} def
 /page     {w margin pageheight { /y exch def wordline } for} def
 
+
+
 page
+%0.0 0.0 0.0 setrgbcolor clippath fill
 
 %showpage
 %/x 72 def
