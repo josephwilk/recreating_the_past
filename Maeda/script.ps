@@ -1,24 +1,19 @@
 %!PS
 << /PageSize [595 842] >> setpagedevice
 
-% paper size
 /pagewidth 5 80 mul def
 /pageheight 15 72 mul def
 
 /box {w 0 rlineto 0 w rlineto -1 w mul 0 rlineto closepath} def
 
-% ----- Define centimeter
 /cm {28.346 mul} def
 /w {10.8 cm} def
 /ww {w 1.5 mul} def
 
 /marginxoffset -300 def
-/marginyoffset -360 def
+/marginyoffset -370 def
 
-
-/GujaratiMT-Bold findfont
-%/Times-Roman findfont
-%/ArialMT findfont
+/Phosphate-Solid findfont
 110 scalefont
 setfont
 
@@ -26,20 +21,18 @@ setfont
 /yindent {700} def
 /margin {25} def
 
-/target (o) def
-
 /oshow %stack: (string)
 { true charpath stroke } def
 
-/GujaratiMT-Bold findfont 100 scalefont setfont
 
-%0 -1 translate
-%newpath 0 0 moveto (Joseph) oshow
-
-
-/Helvetica-Bold findfont
-145 scalefont setfont
-
+/showallfonts {
+    /x 72 def
+    /y 738 def
+    /fs 10 def
+    /Helvetica fs selectfont
+    (*) {x y moveto show /y y fs sub def y 36 lt {showpage /y 738 def}if} 256 string /Font resourceforall
+    showpage
+} def
 
 /word {
     /x 1
@@ -48,119 +41,125 @@ setfont
             99
             lt}  def
 
-    /size {y 0.13 mul} def
+    /size {y 0.17 mul} def
 
     /jitter {dice {0} {4} ifelse} def
 
     /y'   {y marginyoffset add} def
     /x'   {x marginxoffset add} def
 
-    /y''  y' def%{y' jitter add} def
+    /y''  {y' growth mul} def%{y' jitter add} def
     /x''  x' def%{x' jitter add} def
 
     /yinv {10 y sub} def
-    /g {0.0002 y mul} def
-    /g' {0.9 g sub} def
+    /g {0.0004 y mul} def
+    /g' {1.11 g sub} def
     g' setgray
 
-    /Helvetica-Bold findfont size scalefont setfont
+    %/AvenirNext-Heavy findfont size scalefont setfont
+    %/Futura-Bold findfont size scalefont setfont
+    /Phosphate-Solid findfont size scalefont setfont
+
     /target {dice {(J)} {(J)} ifelse} def
     /yz {y 0.1 mul } def
+    %/xz' {0.5 20 y sub mul xz add} def
 
+    /pop {y direction} def
+
+    /xz' {0.5  pop  mul xz add} def
+
+    1.0 scale
+%    newpath
+    xz' y'' moveto
     0.0 0 translate
-    0.5 rotate
-
-    newpath
-    x'' y'' moveto
+    angle rotate
     letter
     oshow
 }  def
 
+
+/direction { 20 exch sub}  def
+
+/it 4.8 def
+/growth 1 def
+
 %         startval inc    final     procedure
 /wordline {w       ww     pagewidth  {
                /x exch def word
-
            } for} def
-/page     {w       4.8    pageheight {
+/page     {w       it    pageheight {
                /y exch def /x
                wordline
            } for} def
 
-0.8 setgray
--81.0 rotate
--20 0 translate
+
+%%-20 0 translate
+%-1 mul
+/angleCorrection { %argument - angle of rotation
+    pageheight w sub it div 1 add  mul -1 mul } def
+
+
+/xz 530 def
+0.9 setgray
+/marginxoffset 900 def
+/angle -0.04 def
 /letter (J) def
+angle angleCorrection rotate
 page
 
-
-0.8 setgray
--81.0 rotate
-/marginxoffset -200 def
+/xz 595 def
+0.9 setgray
+/angle -0.025 def
+/marginxoffset -250 def
 /letter (O) def
+angle angleCorrection rotate
 page
 
-
-0.8 setgray
--81.0 rotate
-/marginxoffset -100 def
+/xz 750 def
+0.9 setgray
+/angle 0.05 def
+/marginxoffset -120 def
 /letter (S) def
+angle angleCorrection rotate
 page
 
 
-0.8 setgray
--81 rotate
-%20 -20 translate
+/direction { 0 add }  def
 
-/marginxoffset 140 def
+/xz -251 def
+0.9 setgray
+/angle -0.04 def
+/marginxoffset -20 def
+/letter (E) def
+angle angleCorrection rotate
+page
+
+/xz -171 def
+0.9 setgray
+/angle 0.09 def
+/marginxoffset 80 def
+/letter (P) def
+angle angleCorrection rotate
+page
+
+/xz -65 def
+0.9 setgray
+/angle -0.04 def
+/marginxoffset 170 def
 /letter (H) def
+angle angleCorrection rotate
 page
 
 
 
-10 -15 translate
+
+
+1 -15 translate
 0.0 setgray
 0 730 moveto
 (JOSEPH) show
 
-
 %0.0 0.0 0.0 setrgbcolor clippath fill
 
-%showpage
-%/x 72 def
-%/y 738 def
-%/fs 10 def
-%/Helvetica fs selectfont
-%(*) {x y moveto show /y y fs sub def y 36 lt {showpage /y 738 def}if} 256 string /Font resourceforall
-
 showpage
-
-% xindent yindent showText
-
-% /yindent yindent margin sub def
-% /Times-Roman findfont 15 scalefont setfont
-% xindent yindent showText
-
-% /yindent yindent margin sub def
-% /Times-Roman findfont 10 scalefont setfont
-% xindent yindent showText
-
-% /yindent yindent margin sub def
-% /Times-Roman findfont 9 scalefont setfont
-% xindent yindent showText
-
-
-
-% % ----- Define procedure for drawing a box
-% /box {w 0 rlineto 0 w rlineto -1 w mul 0 rlineto closepath} def
-
-% % take in account the size of a square
-% /pagewidth pagewidth ww sub def
-% /pageheight pageheight w sub def
-
-% % draw all the boxes it can across a single row
-% /rowboxes {w ww pagewidth {newpath y moveto box fill} for} def
-
-% % increments the y variable and draws all the rows
-% w ww pageheight { /y exch def rowboxes } for
-
-%showpage
+%showallfonts
