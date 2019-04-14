@@ -1,10 +1,7 @@
 %!PS
 << /PageSize [595 842] >> setpagedevice
 
-/pagewidth 5 80 mul def
 /pageheight 15 72 mul def
-
-/box {w 0 rlineto 0 w rlineto -1 w mul 0 rlineto closepath} def
 
 /cm {28.346 mul} def
 /w {10.8 cm} def
@@ -17,13 +14,8 @@
 110 scalefont
 setfont
 
-/xindent {202} def
-/yindent {700} def
-/margin {25} def
-
 /oshow %stack: (string)
 { true charpath stroke } def
-
 
 /showallfonts {
     /x 72 def
@@ -36,130 +28,106 @@ setfont
 
 /word {
     /x 1
-%    /letter (J) def
     /dice  {rand 100 mod
             99
             lt}  def
 
     /size {y 0.17 mul} def
-
-    /jitter {dice {0} {4} ifelse} def
-
-    /y'   {y marginyoffset add} def
-    /x'   {x marginxoffset add} def
-
-    /y''  {y' growth mul} def%{y' jitter add} def
-    /x''  x' def%{x' jitter add} def
-
-    /yinv {10 y sub} def
-    /g {0.0008 y mul} def
-    /g' {1.2 g sub} def
-    g' setgray
+    /jitter {dice {0} {0.5} ifelse} def
 
     %/AvenirNext-Heavy findfont size scalefont setfont
     %/Futura-Bold findfont size scalefont setfont
     /Phosphate-Solid findfont size scalefont setfont
 
-    /target {dice {(J)} {(J)} ifelse} def
-    /yz {y 0.1 mul } def
-    %/xz' {0.5 20 y sub mul xz add} def
+    /dir {y direction} def
 
-    /pop {y direction} def
+    /x' {0.5 dir mul xoffset add jitter add} def
+    /y'   {y marginyoffset add growth mul} def
+    /color {0.0008 y mul 1.2 exch sub} def
 
-    /xz' {0.5 pop mul xz add} def
+    color setgray
 
     1.0 scale
-%    newpath
-    xz' y'' moveto
-    0.0 0 translate
+    x' y' moveto
+    0.0 0.0 translate
     angle rotate
     letter
     oshow
 }  def
 
 
-/direction { 20 exch sub}  def
-
+/direction { 20 exch sub }  def
 /it 4.8 def
 /growth 1 def
 
-%         startval inc    final     procedure
-/wordline {w       ww     pagewidth  {
-               /x exch def word
-           } for} def
-/page     {w       it    pageheight {
-               /y exch def /x
-               wordline
-           } for} def
+/drawall     {w it pageheight {
+                  /y exch def
+                  /x 1 def
+                  word
+              }
+              for
+} def
 
-
-%%-20 0 translate
-%-1 mul
 /angleCorrection { %argument - angle of rotation
     pageheight w sub it div 1 add  mul -1 mul } def
 
 
-/xz 530 def
+/xoffset 532 def
 0.9 setgray
 /marginxoffset 900 def
-/angle -0.04 def
+/angle -0.06 def
 /letter (J) def
 angle angleCorrection rotate
-page
+drawall
 
-/xz 595 def
+/xoffset 602 def
 0.9 setgray
 /angle -0.025 def
 /marginxoffset -250 def
 /letter (O) def
 angle angleCorrection rotate
-page
+drawall
 
-/xz 735 def
+/xoffset 735 def
 0.9 setgray
 /angle -0.03 def
 /marginxoffset -120 def
 /letter (S) def
+/growth 1 def
 angle angleCorrection rotate
-page
-
+drawall
 
 /direction { 0 add }  def
 
-/xz -251 def
+/xoffset -251 def
 0.9 setgray
 /angle 0.09 def
 /marginxoffset -20 def
 /letter (E) def
 angle angleCorrection rotate
-page
+drawall
 
-/xz -171 def
+/xoffset -168 def
 0.9 setgray
 /angle 0.09 def
 /marginxoffset 80 def
 /letter (P) def
 angle angleCorrection rotate
-page
+drawall
 
-/xz -65 def
+/xoffset -65 def
 0.9 setgray
 /angle -0.04 def
 /marginxoffset 170 def
 /letter (H) def
 angle angleCorrection rotate
-page
-
-
-
+drawall
 
 
 1 -15 translate
 0.0 setgray
 0 730 moveto
 (JOSEPH) show
-
-%0.0 0.0 0.0 setrgbcolor clippath fill
 
 showpage
 %showallfonts
