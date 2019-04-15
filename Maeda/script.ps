@@ -1,19 +1,6 @@
 %!PS
 << /PageSize [595 842] >> setpagedevice
 
-/pageheight 15 72 mul def
-
-/cm {28.346 mul} def
-/w {10.8 cm} def
-/ww {w 1.5 mul} def
-
-/marginxoffset -300 def
-/marginyoffset -370 def
-
-/Phosphate-Solid findfont
-110 scalefont
-setfont
-
 /oshow %stack: (string)
 { true charpath stroke } def
 
@@ -29,21 +16,21 @@ setfont
 /word {
     /x 1
     /dice  {rand 100 mod
-            99
+            80
             lt}  def
 
-    /size {y 0.17 mul} def
-    /jitter {dice {0} {0.5} ifelse} def
+    /size {y 0.144 mul} def
+    /jitterx {dice {0} {rand 30 mod} ifelse} def
+    /jittery {dice {0} {rand 10 mod} ifelse} def
 
     %/AvenirNext-Heavy findfont size scalefont setfont
     %/Futura-Bold findfont size scalefont setfont
     /Phosphate-Solid findfont size scalefont setfont
 
     /dir {y direction} def
-
-    /x' {0.5 dir mul xoffset add jitter add} def
-    /y'   {y marginyoffset add growth mul} def
-    /color {0.0008 y mul 1.2 exch sub} def
+    /x' {xgrowth dir mul xoffset add marginxoffset add jitterx add} def
+    /y' {y marginyoffset add ygrowth mul jittery add} def
+    /color {0.0008 y mul 1.3 exch sub} def
 
     color setgray
 
@@ -54,11 +41,6 @@ setfont
     letter
     oshow
 }  def
-
-
-/direction { 20 exch sub }  def
-/it 4.8 def
-/growth 1 def
 
 /drawall     {w it pageheight {
                   /y exch def
@@ -72,61 +54,73 @@ setfont
     pageheight w sub it div 1 add  mul -1 mul } def
 
 
-/xoffset 532 def
+/Phosphate-Solid findfont
+110 scalefont
+setfont
+
+/pageheight 16 80 mul def
+/cm {28.346 mul} def
+/w {10.8 cm} def
+
+/marginxoffset 4 def
+/marginyoffset -565 def
+/direction { 20 exch sub }  def
+/it 4.8 def
+/ygrowth 1 def
+/xgrowth 0.5 def
+
+
+/xoffset 630 def
 0.9 setgray
-/marginxoffset 900 def
 /angle -0.06 def
 /letter (J) def
 angle angleCorrection rotate
 drawall
 
-/xoffset 602 def
+/xoffset 700 def
 0.9 setgray
-/angle -0.025 def
-/marginxoffset -250 def
+/angle -0.08 def
 /letter (O) def
 angle angleCorrection rotate
 drawall
 
-/xoffset 735 def
+/xoffset 270 def
 0.9 setgray
-/angle -0.03 def
-/marginxoffset -120 def
+/angle -0.08 def
+/xgrowth 0.05 def
 /letter (S) def
-/growth 1 def
 angle angleCorrection rotate
 drawall
 
 /direction { 0 add }  def
 
-/xoffset -251 def
+/xoffset 226 def
 0.9 setgray
-/angle 0.09 def
-/marginxoffset -20 def
+/angle -0.1 def
 /letter (E) def
+/xgrowth 0.05 def
 angle angleCorrection rotate
 drawall
 
-/xoffset -168 def
+
+/xoffset -265 def
 0.9 setgray
 /angle 0.09 def
-/marginxoffset 80 def
 /letter (P) def
+/xgrowth 0.5 def
 angle angleCorrection rotate
 drawall
 
-/xoffset -65 def
+/xoffset -160 def
 0.9 setgray
 /angle -0.04 def
-/marginxoffset 170 def
 /letter (H) def
 angle angleCorrection rotate
 drawall
 
-
 1 -15 translate
 0.0 setgray
-0 730 moveto
+marginxoffset 730 moveto
 (JOSEPH) show
 
 showpage
