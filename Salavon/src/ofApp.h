@@ -7,36 +7,25 @@ class ofApp : public ofBaseApp{
 
   public:
     ofxDelaunay triangulation;
-  int drawY;
+    int drawY;
+    std::map<string, ofColor> colorLookup;
+    vector<ofColor> colors;
+    string title;
+    int go;
+    bool bHide;
 
-  // in the h file:
-  ofTrueTypeFont myfont;
+    ofxColorSlider color;
+    ofxPanel gui;
 
-		void setup();
-		void update();
-		void draw();
-  int go;
-  
-  bool bHide;
-
-  ofxFloatSlider radius;
-  ofxColorSlider color;
-
-  
-  ofxVec2Slider center;
-  ofxIntSlider circleResolution;
-  ofxToggle filled;
-  ofxButton twoCircles;
-  ofxButton ringButton;
-  ofxLabel screenSize;
-
-  ofxPanel gui;
-  vector<ofColor> triangleColors;
-
-  ofPoint prevPos;
+    ofPoint prevPos;
     ofMesh mesh;
     ofImage image;
     ofEasyCam easyCam;
+
+		void setup();
+		void update();
+    void draw();
+    void init(string file, string title, int theme);
 
 		void keyPressed(int key);
 		void keyReleased(int key);

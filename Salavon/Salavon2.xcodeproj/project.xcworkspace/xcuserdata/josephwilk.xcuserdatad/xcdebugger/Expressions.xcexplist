@@ -26,10 +26,22 @@
          contextName = "ofApp::draw():ofApp.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "smallestY">
+               value = "ss.str()">
             </PersistentString>
             <PersistentString
                value = "triangleColors">
+            </PersistentString>
+            <PersistentString
+               value = "vertexCount">
+            </PersistentString>
+            <PersistentString
+               value = "ss">
+            </PersistentString>
+            <PersistentString
+               value = "smallestY">
+            </PersistentString>
+            <PersistentString
+               value = "colorLookup">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
